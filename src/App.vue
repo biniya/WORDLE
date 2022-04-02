@@ -40,10 +40,10 @@ const closeModal = () => {
 const word = ref(getRandomWord());
 const row = ref(0);
 
-const logWord = () => {
-  if (import.meta.env.DEV) console.log('[development] secret word:', word.value);
-};
-logWord();
+// const logWord = () => {
+//   if (import.meta.env.DEV) console.log('[development] secret word:', word.value);
+// };
+// logWord();
 
 const state = reactive({
   solution: word.value,
