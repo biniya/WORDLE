@@ -29,15 +29,24 @@
 <script setup>
 import SimpleKeyboard from "./components/SimpleKeyboard.vue";
 import Grid from "./components/Grid.vue";
-import { reactive, onMounted, computed } from "vue";
+import { reactive, onMounted, computed, ref } from "vue";
 import Modal from "./components/Modal.vue";
-// import { common } from "./word/words";
+import { words } from './components/word/words';
+import { getRandomWord } from './components/word/start';
 const isModalVisble = false;
 const closeModal = () => {
       this.isModalVisble = false;
     }
+const word = ref(getRandomWord());
+const row = ref(0);
+
+const logWord = () => {
+  if (import.meta.env.DEV) console.log('[development] secret word:', word.value);
+};
+logWord();
+
 const state = reactive({
-  solution: "benji",
+  solution: word.value,
   guesses: ["", "", "", "", "", ""],
   currentGuessIndex: 0,
   guessedLetters: {
@@ -46,11 +55,6 @@ const state = reactive({
     hint: [],
   },
 });
-// const getRandomWord = () => {
-//   return solution[Math.floor(Math.random() * solution.length)];
-// };
-
-// const word = ref(getRandomWord());
 
 const wonGame = computed(
   () => state.guesses[state.currentGuessIndex - 1] === state.solution
