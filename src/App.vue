@@ -1,4 +1,5 @@
 <template>
+<Header />
   <div class="flex flex-col h-screen max-w-md mx-auto justify-evenly">
     <div>
       <grid
@@ -12,12 +13,12 @@
     <modal
     v-if="wonGame"
     v-show="!isModalVisble"
-    result= " Congrats you Win!"
+    result= "Congrats you Win!"
      />
      <modal 
      v-else-if="lostGame"
      v-show="!isModalVisble"
-     result="Lost"
+     result="You lose!"
      />
     <simple-keyboard
       @onKeyPress="handleInput"
@@ -33,6 +34,8 @@ import { reactive, onMounted, computed, ref } from "vue";
 import Modal from "./components/Modal.vue";
 import { words } from './components/word/words';
 import { getRandomWord } from './components/word/start';
+import Header from './components/Header.vue'
+
 const isModalVisble = false;
 const closeModal = () => {
       this.isModalVisble = false;
@@ -40,9 +43,9 @@ const closeModal = () => {
 const word = ref(getRandomWord());
 const row = ref(0);
 
-// const logWord = () => {
-//   if (import.meta.env.DEV) console.log('[development] secret word:', word.value);
-// };
+const logWord = () => {
+  if (import.meta.env.DEV) console.log('[development] secret word:', word.value);
+};
 // logWord();
 
 const state = reactive({

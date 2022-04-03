@@ -8,7 +8,8 @@
   },
   "dependencies": {
     "simple-keyboard": "^3.4.68",
-    "vue": "^3.2.31"
+    "vue": "^3.2.31",
+    "vue3-popper": "^1.4.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.2.2",
