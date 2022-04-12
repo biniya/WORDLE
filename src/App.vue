@@ -15,10 +15,11 @@
     v-show="!isModalVisble"
     result= "Congrats you Win!"
      />
-     <modal 
+     <modal
      v-else-if="lostGame"
      v-show="!isModalVisble"
-     result="You lose!"
+     result="Incorrect! "
+     :answer="'The answer is: ' + state.solution"
      />
     <simple-keyboard
       @onKeyPress="handleInput"
@@ -32,14 +33,11 @@ import SimpleKeyboard from "./components/SimpleKeyboard.vue";
 import Grid from "./components/Grid.vue";
 import { reactive, onMounted, computed, ref } from "vue";
 import Modal from "./components/Modal.vue";
-import { words } from './components/word/words';
+import { words, common } from './components/word/words';
 import { getRandomWord } from './components/word/start';
 import Header from './components/Header.vue'
 
 const isModalVisble = false;
-const closeModal = () => {
-      this.isModalVisble = false;
-    }
 const word = ref(getRandomWord());
 const row = ref(0);
 
@@ -69,6 +67,7 @@ const handleInput = (key) => {
     return;
   }
   const currentGuess = state.guesses[state.currentGuessIndex];
+  const isValidWord = common.includes(word);
   if (key == "{enter}") {
     // SEND GUESS
     if (currentGuess.length == 5) {
@@ -96,11 +95,8 @@ const handleInput = (key) => {
       state.guesses[state.currentGuessIndex] += key;
     }
   }
+  
 };
-
-// const reloadPage = () => {
-//   window.location.reload();
-// };
 onMounted(() => {
   window.addEventListener("keyup", (e) => {
     e.preventDefault();
