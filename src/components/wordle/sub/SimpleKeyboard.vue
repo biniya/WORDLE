@@ -58,5 +58,5 @@ div.found {
 div.hint:not(.found) {
   @apply bg-yellow-500 !important;
   @apply text-white;
-} 
+}
 </style>
