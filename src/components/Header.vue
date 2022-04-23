@@ -79,6 +79,10 @@
           href="#"
           class="no-underline block mt-4 sm:inline-block sm:mt-0 text-white hover:text-white mr-8"
         >
+          <router-link to="/tictactoe">
+            <img src="../assets/tic-tac-toe.svg" />
+          </router-link>
+
           <!-- Setings svg small -->
           <!-- <svg
             version="1.1"
@@ -444,7 +448,7 @@
           </a>
         </div>
         <div class="flex justify-end items-end">
-          <button @click="showHowToPlay">
+          <button @click="showHowToPlay" class="mr-5">
             <!-- Question svg -->
             <svg
               version="1.1"
@@ -495,6 +499,9 @@
               <g></g>
             </svg>
           </button>
+          <router-link to="/tictactoe">
+            <img src="../assets/tic-tac-toe.svg" alt="tictactoe" />
+          </router-link>
 
           <a href="" class=" ">
             <!-- Settings svg -->
@@ -550,7 +557,7 @@
 </template>
 <script>
 import { createPopper } from "@popperjs/core";
-import HowToPlay from "./HowToPlay.vue";
+import HowToPlay from "./wordle/sub/HowToPlay.vue";
 export default {
   name: "Header",
   components: {
@@ -567,7 +574,7 @@ export default {
     toggle() {
       this.open = !this.open;
     },
-    toggleDropdown: function() {
+    toggleDropdown: function () {
       if (this.dropdownPopoverShow) {
         this.dropdownPopoverShow = false;
       } else {

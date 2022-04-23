@@ -1,4 +1,5 @@
 <template>
+<Header />
   <div class="flex flex-col h-screen max-w-md mx-auto justify-evenly">
     <div>
       <grid
@@ -30,6 +31,7 @@ import { reactive, onMounted, computed, ref } from "vue";
 import Modal from "./sub/Modal.vue";
 import { words, common } from "./sub/word/words";
 import { getRandomWord } from "./sub/word/start";
+import Header from "../Header.vue";
 
 const isModalVisble = false;
 const word = ref(getRandomWord());

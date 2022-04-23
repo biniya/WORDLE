@@ -76,6 +76,14 @@ const ResetGame = () => {
       >
         Reset Game
       </button>
+      <br>
+      <router-link to="/">
+        <button
+        class="px-4 py-2 mt-10 bg-gradient-to-r from-gray-500 via-green-400 to-yellow-500 rounded uppercase font-bold duration-300"
+      >
+        Go to WORDLE
+      </button>
+      </router-link>
     </div>
   </main>
 </template>
