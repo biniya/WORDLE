@@ -553,7 +553,8 @@
       </div>
     </nav>
   </header>
-  <how-to-play v-show="showRule"></how-to-play>
+  <how-to-play v-show="showRule"
+  @close="closeModal"></how-to-play>
 </template>
 <script>
 import { createPopper } from "@popperjs/core";
@@ -587,6 +588,9 @@ export default {
     showHowToPlay() {
       this.showRule = true;
     },
+    closeModal() {
+        this.showRule = false;
+      }
   },
 };
 </script>

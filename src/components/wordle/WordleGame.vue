@@ -10,7 +10,7 @@
         :submitted="i < state.currentGuessIndex"
       />
     </div>
-    <modal v-if="wonGame" v-show="!isModalVisble" result="Congrats you Win!" />
+    <modal v-if="wonGame" v-show="!isModalVisble" result="Congrats you Win!"/>
     <modal
       v-else-if="lostGame"
       v-show="!isModalVisble"
@@ -37,6 +37,9 @@ const isModalVisble = false;
 const word = ref(getRandomWord());
 const row = ref(0);
 
+// const closeModal = () => {
+//         this.isModalVisble = false;
+//       }
 const logWord = () => {
   if (import.meta.env.DEV)
     console.log("[development] secret word:", word.value);
