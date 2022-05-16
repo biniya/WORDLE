@@ -1,5 +1,5 @@
 <template>
-<Header />
+  <Header />
   <div class="flex flex-col h-screen max-w-md mx-auto justify-evenly">
     <div>
       <grid
@@ -10,17 +10,14 @@
         :submitted="i < state.currentGuessIndex"
       />
     </div>
-    <modal v-if="wonGame" v-show="!isModalVisble" result="Congrats you Win!"/>
+    <modal v-if="wonGame" v-show="!isModalVisble" result="Congrats you Win!" />
     <modal
       v-else-if="lostGame"
       v-show="!isModalVisble"
       result="Incorrect! "
       :answer="'The answer is: ' + state.solution"
     />
-    <simple-keyboard
-      @onKeyPress="handleInput"
-      :guessedLetters="state.guessedLetters"
-    />
+    <simple-keyboard @onKeyPress="handleInput" :guessedLetters="state.guessedLetters" />
   </div>
 </template>
 
@@ -41,8 +38,7 @@ const row = ref(0);
 //         this.isModalVisble = false;
 //       }
 const logWord = () => {
-  if (import.meta.env.DEV)
-    console.log("[development] secret word:", word.value);
+  if (import.meta.env.DEV) console.log("[development] secret word:", word.value);
 };
 logWord();
 
@@ -72,9 +68,8 @@ const handleInput = (key) => {
   //   () => state.guesses.includes(common)
   // )
   if (key == "{enter}") {
-    
     // SEND GUESS
-     if (currentGuess.length == 5) {
+    if (currentGuess.length == 5) {
       state.currentGuessIndex++;
       setTimeout(() => {
         for (var i = 0; i < currentGuess.length; i++) {
@@ -83,13 +78,12 @@ const handleInput = (key) => {
             state.guessedLetters.found.push(c);
           } else if (state.solution.indexOf(c) != -1) {
             state.guessedLetters.hint.push(c);
-          }
-          else {
+          } else {
             state.guessedLetters.miss.push(c);
           }
         }
       }, 2500);
-    }
+    } else alert("Not Enough Words");
     // INCLUDES IN WORD LIST
     // if ( currentGuess !== isValidWord) {
     //   alert("Not in Word List");
